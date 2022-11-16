@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header text-white" [ngClass]="{
+        'text-decoration-line-through':task.progress_level==='Completed',
+        'bg-secondary':task.priority_level==='Low',
+        'bg-dark':task.priority_level==='Medium',
+        'bg-warning':task.priority_level==='High',
+        'bg-danger':task.priority_level==='Critical'
+    }">
+        <h4 class="card-title">{{ task.title }}</h4>
+    </div>
+    <div class="card-body bg-primary" [ngClass]="{
+        'text-decoration-line-through':task.progress_level==='Completed',
+        'text-white':task.progress_level==='Pending',
+        'text-warning':task.progress_level==='In_Progress'
+    }">
+        <p><span>Task Description:</span>{{ task.description }}</p>
+        <hr>
+        <p><span>Date Created:</span>{{ task.task_date | date }}</p>
+        <hr>
+        <p><span>Time Created:</span>{{ task.task_time }}</p>
+        <hr>
+        <p><span>Category:</span>{{ task.category }}</p>
+        <hr>
+        <p><span>Priority:</span>{{ task.priority_level }}</p>
+        <hr>
+        <p><span>Progress:</span>{{ task.progress_level }}</p>
+        <hr>
+    </div>
+</div>
