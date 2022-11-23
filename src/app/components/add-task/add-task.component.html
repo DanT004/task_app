@@ -1,0 +1,66 @@
+<div class="background">
+    <div class="container">
+        <form [formGroup]="userForm">
+            <div class="form-group">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter Task Here"
+                    formControlName="title">
+            </div><br>
+            <div class="alert alert-danger" *ngIf="titleFormControl.touched && titleFormControl.errors?.['required']">
+                Title is Required!</div>
+            <div class="alert alert-danger" *ngIf="titleFormControl.dirty && titleFormControl.errors?.['minlength']">
+                Title must be at least 3 characters!</div>
+
+            <div class="form-group">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" placeholder="Enter Task Description" formControlName="description">
+            </div><br>
+            <div class="alert alert-danger" *ngIf="descriptionFormControl.touched && descriptionFormControl.errors?.['required']">
+                Description is Required!</div>
+            
+            <div class="form-group">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category"
+                    placeholder="Enter Category here" formControlName="category">
+            </div><br>
+            <div class="alert alert-danger" *ngIf="categoryFormControl.touched && categoryFormControl.errors?.['required']">Category is Required!</div>
+
+            <div class="form-group">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date"
+                     formControlName="date">
+            </div><br>
+
+            <div class="form-group">
+                <label for="time" class="form-label">Time</label>
+                <input type="time" class="form-control" id="time"
+                    formControlName="time">
+            </div><br>
+           
+            <div class="form-group">
+                <label for="progress_level" class="pe-3">Progress Level:</label>
+                <select formControlName="progress_level">
+                    <option value="pending">Pending</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+            <div class="alert alert-danger" *ngIf="progress_levelFormControl.touched && progress_levelFormControl.errors?.['required']">Progress Level is Required!</div>
+
+            <br>
+            <div class="form-group">
+                <label for="priority_level" class="pe-3">Priority Level:</label>
+                <select formControlName="priority_level">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="critical">Critical</option>
+                </select>
+            </div>
+            <div class="alert alert-danger" *ngIf="priority_levelFormControl.touched && priority_levelFormControl.errors?.['required']">Priority Level is Required!</div>
+
+            <br>
+            <button type="button" class="btn btn-warning" (click)="addTask()" [disabled]="userForm.invalid">Submit</button>
+        </form>
+    </div>
+</div>
