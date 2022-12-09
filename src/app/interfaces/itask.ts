@@ -7,6 +7,5 @@ export interface Itask {
     priority_level:string;
     progress_level:string;
     task_date:Date;
-    task_time:Time;
 };
 
